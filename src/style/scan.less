@@ -1,0 +1,33 @@
+@color-primary: #890b7c;
+@color-success: #0ac0b9;
+@color-error: #cf4045;
+@color-info: #faad15;
+@color-black: #13223f;
+@color-grey: #e0e0e0;
+
+.P-scan-container {
+	height: calc(100vh - 148px);
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.scan-box {
+		display: flex;
+		width: 500px;
+		height: 50px;
+		border-radius: 4px;
+		justify-content: space-around;
+		.ant-input {
+			width: 350px;
+		}
+		.ant-btn {
+			width: 100px;
+		}
+	}
+	.scan-text {
+		margin-top: 50px;
+		font-size: 30px;
+		font-weight: lighter;
+	}
+}

@@ -1,0 +1,58 @@
+@color-primary: #890b7c;
+@color-success: #0ac0b9;
+@color-error: #cf4045;
+@color-info: #faad15;
+@color-black: #13223f;
+@color-grey: #e0e0e0;
+
+.P-home-container {
+	height: calc(100vh-50px);
+	.home-brand {
+		height: 660px;
+		display: flex;
+		&-pic {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			background-color: @color-primary;
+			border-radius: 200% 0% 0% 0%;
+		}
+		&-slogan {
+			display: flex;
+			padding-left: 100px;
+			flex: 1;
+			height: 100%;
+			font-weight: lighter;
+			align-items: center;
+			font-size: 50;
+			.ant-btn {
+				width: 200px;
+				height: 50px;
+			}
+		}
+		img {
+			width: 200px;
+		}
+	}
+	.home-info {
+		display: flex;
+		height: 600px;
+		&-pic {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			img {
+				width: 400px;
+			}
+		}
+		&-text {
+			flex: 2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}

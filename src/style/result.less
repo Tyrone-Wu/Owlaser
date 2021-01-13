@@ -1,0 +1,35 @@
+.P-result-container {
+	width: 100%;
+	height: calc(100vh - 78px);
+	background-color: #f2f6fc;
+	display: flex;
+	.dashboard-container {
+		min-width: 1188px;
+		margin: 16px;
+		padding: 0 16px;
+		flex: 1;
+		border-radius: 4px;
+		background-color: #fff;
+		box-shadow: 0 2px 7px 0px rgba(171, 187, 204, 0.22);
+		overflow: scroll;
+		.scan-summery {
+			margin-top: 24px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			.dashboard-card {
+				flex: auto;
+				min-width: 250px;
+				height: 200px;
+				margin-right: 16px;
+				&:last-child {
+					margin: 0;
+				}
+			}
+		}
+		.scan-table {
+			height: 100%;
+			margin-top: 24px;
+		}
+	}
+}

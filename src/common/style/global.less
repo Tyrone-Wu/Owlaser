@@ -1,4 +1,56 @@
+@color-primary: #890b7c;
+@color-primary-0: #fff0f6;
+@color-success: #0ac0b9;
+@color-error: #cf4045;
+@color-info: #faad15;
+@color-black: #13223f;
+@color-grey: #e0e0e0;
+
 // 全局样式
-* {
-	color: red;
+*,
+p {
+	margin: 0;
+	padding: 0;
+}
+
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+.ant-input {
+	height: 34px;
+	border-radius: 5px;
+}
+
+.ant-btn-primary {
+	background: @color-primary;
+	border-color: @color-primary;
+	&:hover,
+	&:focus {
+		opacity: 0.8;
+		background: @color-primary;
+		border-color: @color-primary;
+	}
+}
+
+.ant-card-bordered {
+	border-radius: 4px;
+	// box-shadow: 0 2px 7px 0px rgba(171, 187, 204, 0.22);
+}
+.ant-menu-item:hover,
+.ant-menu-item-selected,
+.ant-menu-item-active,
+.ant-menu-submenu:hover,
+.ant-menu-submenu-selected,
+.ant-menu-submenu-active {
+	color: @color-primary !important;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+.ant-menu-submenu-selected {
+	background-color: @color-primary-0;
+}
+
+.ant-menu-inline .ant-menu-item::after {
+	border-right: 3px solid @color-primary;
 }
