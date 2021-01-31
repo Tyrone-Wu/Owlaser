@@ -4,7 +4,6 @@ import '@/style/result.less';
 import AsideNav from '@/components/Nav/AsideNav';
 import NormalNav from '@/components/Nav/NormalNav';
 import DashBoard from '@/components/Result/DashBoard';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 export default class Result extends Component {
 	handleFileScan() {
@@ -13,6 +12,7 @@ export default class Result extends Component {
 	render() {
 		return (
 			<>
+				<NormalNav />
 				<div className="P-result-container">
 					{/* 顶部数据图表 */}
 					<AsideNav></AsideNav>

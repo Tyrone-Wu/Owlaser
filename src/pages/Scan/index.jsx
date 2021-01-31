@@ -24,7 +24,7 @@ export default class Scan extends Component {
 						<div className="scan-text">开启健康开发之旅</div>
 					</div>
 					<Footer>
-						<GithubOutlined />
+						<GithubOutlined /> owlaser
 					</Footer>
 				</Layout>
 			</>

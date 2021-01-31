@@ -1,6 +1,6 @@
-import { Menu, Button } from 'antd';
+import { Menu } from 'antd';
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import {
 	AppstoreOutlined,
 	PieChartOutlined,
@@ -24,8 +24,69 @@ export default class AsideNav extends Component {
 		});
 	};
 
+	renderSubMenu = ({ key, icon, title, subs }) => {
+		return (
+			<SubMenu
+				key={key}
+				title={title}
+				icon={icon}
+				className="ant-menu-submenu-active"
+			>
+				{subs &&
+					subs.map((item) => {
+						return item.subs && item.subs.length > 0
+							? this.renderSubMenu(item)
+							: this.renderMenuItem(item);
+					})}
+			</SubMenu>
+		);
+	};
+	renderMenuItem = ({ key, icon, title }) => {
+		return (
+			<Menu.Item key={key} icon={icon}>
+				<Link to={key}>
+					<span>{title}</span>
+				</Link>
+			</Menu.Item>
+		);
+	};
 	render() {
 		const navCollapsed = this.state.navCollapsed;
+		const menus = [
+			{
+				title: '开始扫描',
+				icon: <DesktopOutlined />,
+				key: '/scan',
+			},
+
+			{
+				title: '扫描结果',
+				icon: <PieChartOutlined />,
+				key: '/result',
+				subs: [
+					{ key: '/result/detail', title: '证书信息', icon: '' },
+					{ key: '/page/2', title: '漏洞信息', icon: '' },
+					{ key: '/page/3', title: '安全信息', icon: '' },
+					{ key: '/page/4', title: '冲突信息', icon: '' },
+				],
+			},
+			{
+				title: '组件库',
+				icon: <DesktopOutlined />,
+				key: '/repo',
+			},
+			{
+				title: '回收站',
+				icon: <ContainerOutlined />,
+				key: '/del',
+			},
+			{
+				title: '站内设置',
+				icon: <AppstoreOutlined />,
+				key: '/setting',
+			},
+		];
+
 		return (
 			<div className="C-aside-nav-container">
 				<div
@@ -44,40 +105,18 @@ export default class AsideNav extends Component {
 					)}
 				</div>
 				<Menu
-					defaultSelectedKeys={['1']}
-					defaultOpenKeys={['sub1']}
-					mode="inline"
+					defaultSelectedKeys={['/scan']}
+					defaultOpenKeys={['/scan']}
 					theme="light"
 					inlineCollapsed={this.state.navCollapsed}
+					mode="inline"
+					className="menu"
 				>
-					<Menu.Item key="1" icon={<PieChartOutlined />}>
-						扫描结果
-					</Menu.Item>
-					<Menu.Item key="2" icon={<DesktopOutlined />}>
-						组件库
-					</Menu.Item>
-					<Menu.Item key="3" icon={<ContainerOutlined />}>
-						回收站
-					</Menu.Item>
-					<SubMenu key="sub1" icon={<MailOutlined />} title="信息">
-						<Menu.Item key="5">Option 5</Menu.Item>
-						<Menu.Item key="6">Option 6</Menu.Item>
-						<Menu.Item key="7">Option 7</Menu.Item>
-						<Menu.Item key="8">Option 8</Menu.Item>
-					</SubMenu>
-					<SubMenu
-						className="ant-menu-submenu-active"
-						key="sub2"
-						icon={<AppstoreOutlined />}
-						title="站内设置"
-					>
-						<Menu.Item key="9">Option 9</Menu.Item>
-						<Menu.Item key="10">Option 10</Menu.Item>
-						<SubMenu key="sub3" title="Submenu">
-							<Menu.Item key="11">Option 11</Menu.Item>
-							<Menu.Item key="12">Option 12</Menu.Item>
-						</SubMenu>
-					</SubMenu>
+					{menus.map((item) => {
+						return item.subs && item.subs.length > 0
+							? this.renderSubMenu(item)
+							: this.renderMenuItem(item);
+					})}
 				</Menu>
 			</div>
 		);

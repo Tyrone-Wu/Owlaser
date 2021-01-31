@@ -22,7 +22,7 @@ export default class NormalNav extends Component {
 							src="https://cdn.jsdelivr.net/gh/tyrone-wu/PicRepo/logo-c.png"
 						/>
 					</div>
-					<div
+					{/* <div
 						className="nav-item"
 						key="scan"
 						onClick={() => this.props.history.push('/scan')}
@@ -49,7 +49,7 @@ export default class NormalNav extends Component {
 						onClick={() => this.props.history.push('/backRepo')}
 					>
 						回收站
-					</div>
+					</div> */}
 				</div>
 				<div className="nav-right">
 					<NavAvatar />

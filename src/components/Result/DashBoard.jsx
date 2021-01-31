@@ -153,7 +153,7 @@ export default class DashBoard extends Component {
 					</Card>
 				</div>
 				<div className="scan-table">
-					<Table dataSource={dataSource} columns={columns} />;
+					<Table dataSource={dataSource} columns={columns} />
 				</div>
 			</div>
 		);
