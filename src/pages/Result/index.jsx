@@ -10,9 +10,17 @@ export default class Result extends Component {
 	handleFileScan() {
 		this.props.history.push('/scan');
 	}
+	// componentDidMount() {
+	// 	this.unlisten = history.listen((location) =>
+	// 		this.setState({
+	// 			page: this.getPage(location),
+	// 		})
+	// 	);
+	// }
 	render() {
 		return (
 			<>
+				<NormalNav />
 				<div className="P-result-container">
 					{/* 顶部数据图表 */}
 					<AsideNav></AsideNav>

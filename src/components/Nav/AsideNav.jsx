@@ -1,4 +1,4 @@
-import { Menu } from 'antd';
+import { Menu, Table, Input } from 'antd';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -11,6 +11,7 @@ import {
 	DoubleRightOutlined,
 } from '@ant-design/icons';
 
+const { Search } = Input;
 const { SubMenu } = Menu;
 
 export default class AsideNav extends Component {
@@ -50,7 +51,102 @@ export default class AsideNav extends Component {
 			</Menu.Item>
 		);
 	};
+
 	render() {
+		const dataSource = [
+			{
+				key: '1',
+				name: '胡彦斌',
+				age: 32,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '1',
+				name: '胡彦斌',
+				age: 32,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '1',
+				name: '胡彦斌',
+				age: 32,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '1',
+				name: '胡彦斌',
+				age: 32,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '1',
+				name: '胡彦斌',
+				age: 32,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+			{
+				key: '2',
+				name: '胡彦祖',
+				age: 42,
+				address: '西湖区湖底公园1号',
+			},
+		];
+
+		const columns = [
+			{
+				title: '姓名',
+				dataIndex: 'name',
+				key: 'name',
+			},
+		];
 		const navCollapsed = this.state.navCollapsed;
 		const menus = [
 			{
@@ -86,10 +182,10 @@ export default class AsideNav extends Component {
 				key: '/setting',
 			},
 		];
-
+		const onSearch = (value) => console.log(value);
 		return (
 			<div className="C-aside-nav-container">
-				<div
+				{/* <div
 					className={`${
 						navCollapsed ? 'aside-nav-collapsed' : 'aside-nav-display'
 					}`}
@@ -103,8 +199,8 @@ export default class AsideNav extends Component {
 							&nbsp; 收起导航
 						</>
 					)}
-				</div>
-				<Menu
+				</div> */}
+				{/* <Menu
 					defaultSelectedKeys={['/scan']}
 					defaultOpenKeys={['/scan']}
 					theme="light"
@@ -117,7 +213,16 @@ export default class AsideNav extends Component {
 							? this.renderSubMenu(item)
 							: this.renderMenuItem(item);
 					})}
-				</Menu>
+				</Menu> */}
+				<Search
+					placeholder="input search text"
+					allowClear
+					onSearch={onSearch}
+					style={{ width: 200 }}
+				/>
+				<div className="scan-table">
+					<Table dataSource={dataSource} columns={columns} />
+				</div>
 			</div>
 		);
 	}

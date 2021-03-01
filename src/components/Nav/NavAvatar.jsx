@@ -19,6 +19,9 @@ class NavAvatar extends Component {
 
 	handleClick = (e) => {
 		this.setState({ isLogin: true });
+		console.log(`e`, e);
+		this.props.history.push(`/${e.key}`);
+
 		if (e.key === 'logout') {
 			this.setState({ isLogin: false });
 			this.props.history.push('/home');

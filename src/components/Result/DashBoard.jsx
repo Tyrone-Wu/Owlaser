@@ -146,14 +146,61 @@ export default class DashBoard extends Component {
 								avatar={
 									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
 								}
+								title="dsdasdsa"
+								description="This is the description"
+							/>
+						</Skeleton>
+					</Card>
+				</div>
+				<div className="scan-summery">
+					<Card className="dashboard-card" loading={loading}>
+						<Meta
+							avatar={
+								<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+							}
+							title="漏洞扫描信息"
+							description="This is the description"
+						/>
+					</Card>
+
+					<Card className="dashboard-card">
+						<Skeleton loading={loading} avatar active>
+							<Meta
+								avatar={
+									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+								}
 								title="证书扫描信息"
+								description="This is the description"
+							/>
+						</Skeleton>
+					</Card>
+					<Card className="dashboard-card">
+						<Skeleton loading={loading} avatar active>
+							<Meta
+								avatar={
+									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+								}
+								title="证书扫描信息"
+								description="This is the description"
+							/>
+						</Skeleton>
+					</Card>
+					<Card className="dashboard-card">
+						<Skeleton loading={loading} avatar active>
+							<Meta
+								avatar={
+									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+								}
+								title="dsdasdsa"
 								description="This is the description"
 							/>
 						</Skeleton>
 					</Card>
 				</div>
 				<div className="scan-table">
-					<Table dataSource={dataSource} columns={columns} />
+					<Card loading={loading}>
+						<Table dataSource={dataSource} columns={columns} />
+					</Card>
 				</div>
 			</div>
 		);

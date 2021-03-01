@@ -26,7 +26,7 @@
 		font-weight: 700;
 	}
 }
-
+// 首页页面导航栏
 .C-home-nav-container {
 	width: 100%;
 	height: 80px;
@@ -50,6 +50,8 @@
 		}
 	}
 }
+
+// 功能页面导航栏
 .C-normal-nav-container {
 	min-width: 1440px;
 	width: 100%;
@@ -64,9 +66,15 @@
 	.nav-left {
 		display: flex;
 		align-items: center;
+		.nav-brand {
+			margin-right: 50px;
+		}
 		.nav-item {
+			color: white;
 			padding: 0 20px;
 			opacity: 0.8;
+			font-size: 18px;
+			font-weight: 300;
 			&:hover {
 				opacity: 1;
 			}
@@ -169,26 +177,14 @@
 	}
 }
 
+// 侧边搜索栏样式
 .C-aside-nav-container {
 	height: 100%;
+	width: 220px;
+	padding: 10px;
 	background-color: #fff;
-
-	.aside-nav-collapsed {
-		width: 79px;
-	}
-	.aside-nav-display {
-		width: 220px;
-	}
-	.aside-nav-collapsed,
-	.aside-nav-display {
-		height: 40px;
-		align-items: center;
-		display: flex;
-		justify-content: center;
-		&:hover {
-			color: @color-primary;
-			background-color: @color-primary-0;
-			transition: ease-in-out 0.2s;
-		}
+	.ant-input {
+		height: 32px;
+		padding: 0;
 	}
 }
