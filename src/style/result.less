@@ -11,41 +11,70 @@
 	height: calc(100vh - 58px);
 	background-color: #f2f6fc;
 	display: flex;
-	.dashboard-container {
-		min-width: 1188px;
-		margin: 16px 0 16px 8px;
-		padding: 0 16px;
-		flex: 1;
-		border-radius: 4px;
-		background-color: #fff;
-		box-shadow: 0 2px 7px 0px rgba(171, 187, 204, 0.22);
+	.layout-body {
+		width: 100%;
+		height: calc(100vh - 58px);
 		overflow: scroll;
-		.scan-summery {
-			margin-top: 24px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-			.dashboard-card {
-				flex: auto;
-				min-width: 250px;
+		.dashboard-container {
+			min-width: 1178px;
+			margin: 16px;
+			flex: 1;
+			border-radius: 4px;
+			// padding: 0 16px;
+			// background-color: #fff;
+			// box-shadow: 0 2px 7px 0px rgba(171, 187, 204, 0.22);
+			// overflow: scroll;
+			.scan-info {
 				height: 200px;
-				margin-right: 16px;
+				background-color: #fff;
+				border-radius: 4px;
+				box-shadow: 0 2px 7px 0px rgba(171, 187, 204, 0.22);
+			}
+			.scan-summery {
+				margin-top: 16px;
+				height: 400px;
 				display: flex;
-				justify-content: center;
-				align-items: center;
-				&:last-child {
-					margin: 0;
+				.dashboard-card {
+					flex: auto;
+					min-width: 250px;
+					margin-right: 10px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				}
-				.card-desc {
-					color: red;
-					margin-top: 15px;
+				.scan-summery-left {
+					width: 60%;
+					display: flex;
+					flex-wrap: wrap;
+				}
+				.scan-summery-right {
+					width: 40%;
+					background-color: #fff;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 4px;
+					box-shadow: 0 2px 7px 0px rgba(171, 187, 204, 0.22);
 				}
 			}
-		}
-		.scan-table {
-			height: 100%;
-			margin-top: 24px;
-			overflow-x: scroll;
+			.scan-table {
+				border-radius: 4px;
+				height: 100%;
+				margin-top: 16px;
+				padding: 10px 0;
+				background-color: #fff;
+				overflow-x: scroll;
+				.scan-table-row {
+					font-size: 12px;
+					font-weight: lighter;
+				}
+				.ant-table-thead {
+					color: #cf4045;
+				}
+				.artifact_id {
+					color: @color-primary;
+				}
+			}
 		}
 	}
 }

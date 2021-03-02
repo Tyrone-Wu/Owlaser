@@ -102,29 +102,67 @@ export default class DashBoard extends Component {
 				licenseList: null,
 			},
 		];
+		// const dataSource = [];
 
 		const columns =
 			dataSource.length &&
 			Object.keys(dataSource[0]).map((key) => ({
 				title: key.toLocaleUpperCase(),
 				dataIndex: key,
+				className: key,
 			}));
 
 		return (
 			<div className="dashboard-container">
 				{/* <Switch checked={!loading} onChange={this.onChange} /> */}
+				<div className="scan-info"></div>
 				<div className="scan-summery">
-					<Card className="dashboard-card" loading={loading}>
-						<Meta
-							avatar={
-								<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-							}
-							title="漏洞扫描信息"
-							description="This is the description"
-						/>
-					</Card>
+					<div className="scan-summery-left">
+						<Card className="dashboard-card" loading={loading}>
+							<Meta
+								avatar={
+									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+								}
+								title="漏洞扫描信息"
+								description="This is the description"
+							/>
+						</Card>
 
-					<Card className="dashboard-card">
+						<Card className="dashboard-card">
+							<Skeleton loading={loading} avatar active>
+								<Meta
+									avatar={
+										<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+									}
+									title="证书扫描信息"
+									description="This is the description"
+								/>
+							</Skeleton>
+						</Card>
+						<Card className="dashboard-card">
+							<Skeleton loading={loading} avatar active>
+								<Meta
+									avatar={
+										<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+									}
+									title="证书扫描信息"
+									description="This is the description"
+								/>
+							</Skeleton>
+						</Card>
+						<Card className="dashboard-card">
+							<Skeleton loading={loading} avatar active>
+								<Meta
+									avatar={
+										<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+									}
+									title="证书扫描信息"
+									description="This is the description"
+								/>
+							</Skeleton>
+						</Card>
+					</div>
+					<div className="scan-summery-right">
 						<Progress
 							type="circle"
 							strokeColor={{
@@ -135,45 +173,25 @@ export default class DashBoard extends Component {
 							percent={70}
 						/>
 						<div className="card-desc">漏洞扫描信息</div>
-					</Card>
-					<Card className="dashboard-card">
-						<Skeleton loading={loading} avatar active>
-							<Meta
-								avatar={
-									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-								}
-								title="证书扫描信息"
-								description="This is the description"
-							/>
-						</Skeleton>
-					</Card>
-					<Card className="dashboard-card">
-						<Skeleton loading={loading} avatar active>
-							<Meta
-								avatar={
-									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-								}
-								title="证书扫描信息"
-								description="This is the description"
-							/>
-						</Skeleton>
-					</Card>
-					<Card className="dashboard-card">
-						<Skeleton loading={loading} avatar active>
-							<Meta
-								avatar={
-									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-								}
-								title="dsdasdsa"
-								description="This is the description"
-							/>
-						</Skeleton>
-					</Card>
+					</div>
 				</div>
 				<div className="scan-table">
-					<Card loading={loading}>
-						<Table dataSource={dataSource} columns={columns} />
-					</Card>
+					组件扫描总结
+					<Table
+						dataSource={dataSource}
+						columns={columns}
+						scroll={{ x: 500 }}
+						size="small"
+						onHeaderRow={(columns, index) => {
+							return {
+								onClick: () => {
+									alert('k');
+								}, // 点击表头行
+							};
+						}}
+						showHeader={true}
+						rowClassName={(record, index) => `table-row-${record.artifact_id}`}
+					/>
 				</div>
 			</div>
 		);
