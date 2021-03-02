@@ -23,7 +23,7 @@ export default class Result extends Component {
 				<NormalNav />
 				<div className="P-result-container">
 					{/* 顶部数据图表 */}
-					<AsideNav></AsideNav>
+					{/* <AsideNav></AsideNav> */}
 					<DashBoard></DashBoard>
 				</div>
 			</>

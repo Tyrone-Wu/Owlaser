@@ -16,7 +16,10 @@ export default class Scan extends Component {
 					<NormalNav />
 					<div className="P-scan-container">
 						<div className="scan-box">
-							<Input type="file"></Input>
+							<div className="file-input">
+								<Input type="file"></Input>
+								<span>点击输入框选择组件包</span>
+							</div>
 							<Button onClick={() => this.handleFileScan()} type="primary">
 								立即扫描
 							</Button>
