@@ -8,35 +8,30 @@ import {
 	LogoutOutlined,
 	MessageOutlined,
 } from '@ant-design/icons';
+import COOKIE from '@/common/utils/cookie';
 
 class NavAvatar extends Component {
 	constructor(props) {
 		super(props);
 	}
-	state = {
-		isLogin: true,
-	};
 
-	handleClick = (e) => {
-		this.setState({ isLogin: true });
-		console.log(`e`, e);
+	handleItemClick = (e) => {
 		this.props.history.push(`/${e.key}`);
 
 		if (e.key === 'logout') {
-			this.setState({ isLogin: false });
-			this.props.history.push('/home');
+			COOKIE.delCookie('user');
+			this.props.history.push('/login');
 		}
 	};
 	handleLogClick() {
 		this.props.history.push('/login');
-		this.setState({ isLogin: true });
 	}
 
 	render() {
-		const { isLogin } = this.state;
+		const userInfo = JSON.parse(COOKIE.getCookie('user'));
 
 		const menu = (
-			<Menu onClick={this.handleClick} className="nav-avatar-dropdown">
+			<Menu onClick={this.handleItemClick} className="nav-avatar-dropdown">
 				<div className="menu-item-user">
 					{/* <div className="user-avatar"></div> */}
 					<img
@@ -45,8 +40,8 @@ class NavAvatar extends Component {
 						src="https://cdn.jsdelivr.net/gh/tyrone-wu/PicRepo/mty.png"
 					/>
 					<div className="user-info">
-						<div className="user-name">用户名：度假酒店</div>
-						<div className="user-id">账号：8888888</div>
+						<div className="user-name">账户名：{userInfo.user_name}</div>
+						<div className="user-id">账号：{userInfo.user_id}</div>
 					</div>
 				</div>
 				<Menu.Item key="info">
@@ -111,7 +106,7 @@ class NavAvatar extends Component {
 
 		return (
 			<>
-				{isLogin ? (
+				{COOKIE.getCookie('user') ? (
 					<>
 						<div className="nav-user-msg">
 							<Dropdown overlay={userMsg} trigger="click" arrow="true">
@@ -125,7 +120,7 @@ class NavAvatar extends Component {
 								src="https://cdn.jsdelivr.net/gh/tyrone-wu/PicRepo/mty.png"
 							/>
 						</Dropdown>
-						<div className="nav-user-name">Tyrone</div>
+						<div className="nav-user-name">{userInfo.user_name}</div>
 					</>
 				) : (
 					<Button type="primary" onClick={this.handleLogClick.bind(this)}>

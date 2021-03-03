@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Skeleton, Switch, Table, Card, Avatar, Progress } from 'antd';
+import { Skeleton, Tooltip, Table, Card, Avatar, Progress } from 'antd';
 import {
 	EditOutlined,
 	EllipsisOutlined,
@@ -163,6 +163,7 @@ export default class DashBoard extends Component {
 						</Card>
 					</div>
 					<div className="scan-summery-right">
+						<div className="card-desc">项目整体安全系数</div>
 						<Progress
 							type="circle"
 							strokeColor={{
@@ -172,7 +173,6 @@ export default class DashBoard extends Component {
 							}}
 							percent={70}
 						/>
-						<div className="card-desc">漏洞扫描信息</div>
 					</div>
 				</div>
 				<div className="scan-table">
@@ -189,8 +189,8 @@ export default class DashBoard extends Component {
 								}, // 点击表头行
 							};
 						}}
-						showHeader={true}
-						rowClassName={(record, index) => `table-row-${record.artifact_id}`}
+						rowClassName="scan-table-row "
+						// rowClassName={(record, index) => `table-row-${record.artifact_id}`}
 					/>
 				</div>
 			</div>

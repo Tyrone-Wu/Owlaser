@@ -1,39 +1,42 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, Form, message } from 'antd';
 import * as $http from '@/service/http';
 import API from '@/service/api';
 import '@/style/user.less';
 import { UserOutlined } from '@ant-design/icons';
+import COOKIE from '@/common/utils/cookie';
 
 export default class user extends Component {
-	state = {
-		uid: '',
-		pwd: '',
-	};
-	changeUId(e) {
-		this.setState({ uid: e.target.value });
-	}
-	changePwd(e) {
-		this.setState({ pwd: e.target.value });
-	}
-	// 确认登陆
-	async handleLogin() {
-		this.validate();
-		const home = await $http.get('/', {});
-		const { data } = await $http.post(API.user.login, {
-			uid: this.state.uid,
-			pwd: this.state.pwd,
-		});
-		if (data.code) {
+	// // 确认登陆
+	// async handleLogin() {
+	// 	const { uid, pwd } = this.state;
+
+	// const home = await $http.get('/', {});
+	// const { data } = await $http.post(API.user.login, {
+	// 	uid: this.state.uid,
+	// 	pwd: this.state.pwd,
+	// });
+	// }
+	onFinish = (userInfo) => {
+		const { user_name, user_pwd } = userInfo;
+		if (1) {
+			COOKIE.setCookie(
+				'user',
+				JSON.stringify({
+					user_name,
+					user_pwd,
+					user_id: Math.floor(Math.random() * 10000000),
+				})
+			);
+
+			message.success('登陆成功');
 			this.props.history.push('/home');
 		}
-	}
-	// 跳转注册
-	go2Rejister() {
-		this.props.history.push('/rejister');
-	}
-	// 表单校验
-	validate() {}
+	};
+
+	onFinishFailed = (errorInfo) => {
+		message.error('登陆失败，请重试！');
+	};
 
 	render() {
 		return (
@@ -53,38 +56,48 @@ export default class user extends Component {
 						</div>
 						<div style={{ fontSize: '34px', margin: '20px 0' }}>登陆</div>
 					</div>
+
 					<div className="user-form">
-						<div className="user-form-item">
+						<Form
+							name="login"
+							initialValues={{ remember: true }}
+							onFinish={(userInfo) => this.onFinish(userInfo)}
+							onFinishFailed={() => this.onFinishFailed()}
+						>
 							<p className="user-form-item-label">账 号</p>
-							<Input
-								value={this.state.uid}
-								onChange={(e) => this.changeUId(e)}
-								suffix={<UserOutlined />}
-								placeholder="请输入你的账号"
-							/>
-						</div>
-						<div className="user-form-item">
-							<p className="user-form-item-label">密 码</p>
-							<Input.Password
-								value={this.state.pwd}
-								onChange={(e) => this.changePwd(e)}
-								placeholder="请输入你的密码"
-							/>
-						</div>
-						<div className="user-form-item">
-							<Button
-								type="primary"
-								className="user-btn"
-								onClick={() => this.handleLogin()}
+							<Form.Item
+								name="user_name"
+								className="user-form-item"
+								rules={[{ required: true, message: '请输入账号！' }]}
 							>
-								登陆
-							</Button>
-						</div>
+								<Input suffix={<UserOutlined />} />
+							</Form.Item>
+
+							<p className="user-form-item-label">密 码</p>
+							<Form.Item
+								name="user_pwd"
+								className="user-form-item"
+								rules={[{ required: true, message: '请输入密码！' }]}
+							>
+								<Input.Password />
+							</Form.Item>
+
+							<Form.Item className="user-form-item">
+								<Button type="primary" htmlType="submit" className="user-btn">
+									登陆
+								</Button>
+							</Form.Item>
+						</Form>
 					</div>
+
 					<div className="user-form-bottom">
-						<div onClick={() => this.go2Rejister()}>注册</div>
+						<div onClick={() => this.props.history.push('/home')}>返回首页</div>
 						<span>|</span>
-						<div onClick={() => this.go2Rejister()}>忘记密码</div>
+						<div onClick={() => this.props.history.push('/rejister')}>注册</div>
+						<span>|</span>
+						<div onClick={() => this.props.history.push('/rejister')}>
+							忘记密码
+						</div>
 					</div>
 				</div>
 			</div>

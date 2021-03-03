@@ -1,4 +1,4 @@
-import { Menu, Table, Input } from 'antd';
+import { Menu, Table, Input, Tooltip } from 'antd';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { GithubOutlined } from '@ant-design/icons';
@@ -175,6 +175,7 @@ export default class AsideNav extends Component {
 						pagination={false}
 						scroll={{ y: 500 }}
 						size="small"
+						rowClassName="list-table-row"
 					/>
 				</div>
 				<div className="aside-footer">{/* <GithubOutlined /> owlaser */}</div>
